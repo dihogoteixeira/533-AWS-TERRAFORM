@@ -154,15 +154,10 @@ Aproveite parar fazer seus testes, todo novo atributo que for criado, faça semp
 
 Caso houver qualquer erro, leia atentamente o terminal.
 
-1. Inicialize o Provider
+Exercício 1. 
 
-2. Crie uma rede
-
-3. Crie um disco de 30GB
-
-4. Crie uma regra de firewall liberando apenas a porta 22 para 0.0.0.0/0
-
-5. Crie uma máquina virtual
+• Crie um SG com o nome allow-basic-ports, liberando apenas as portas (80/tcp, 8080/tcp), 22/tcp e 3389/tcp e 3389/udp para internet (0.0.0.0/0). 
+• Crie duas instâncias utilizando a subnet e SG criados. • Destrua toda infraestrutura.
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura  por questões de billing e manutenção sadia da sua free tier.
