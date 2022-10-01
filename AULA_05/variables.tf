@@ -34,14 +34,14 @@ variable "subnet_id" {
   # var.subnet_id[*]
   # var.subnet_id[0]
   # var.subnet_id.[1]
-  type = list(any)
+  type    = list(any)
   default = ["sg-34875634875", 1, true, null]
 }
 
 variable "subnet_id_map" {
   type = map(string)
   default = {
-    "Key": "Value",
-    "Key-1": "Value-1",
+    "Key" : "Value",
+    "Key-1" : "Value-1",
   }
 }
