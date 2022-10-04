@@ -22,8 +22,8 @@ variable "machine_name" {
 }
 
 variable "instance_type" {
-  type = string
-  default = "t2.micro"
+  type        = string
+  default     = "t2.micro"
   description = "Tipo da instancia computacional ex.: t2.micro"
 }
 
