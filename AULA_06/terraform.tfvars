@@ -1,0 +1,2 @@
+machine_name = "sasuke"
+
