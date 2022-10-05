@@ -10,6 +10,31 @@ module "vpc_rest_github" {
   subnet_cidr_block = var.subnet_cidr_block
 }
 
+/*
+./aws_modules/
+../vpc
+../subnet
+../instance
+
+.:: UTILIZANDO MODULOS EM UM MESMO REPOSITÓRIO ::.
+
+module "vpc" {
+  source            = "git@github.com:dihogoteixeira/aw_modules.git//vpc"
+  ...
+}
+
+module "subnet" {
+  source            = "git@github.com:dihogoteixeira/aw_modules.git//subnet"
+  ...
+}
+
+module "instance" {
+  source            = "git@github.com:dihogoteixeira/aw_modules.git//instance"
+  ...
+}
+*/
+
+
 # module "vpc_scm" {
 #   source = "git@github.com:dihogoteixeira/533-AWS-TERRAFORM.git?ref=1.23.0"
 # }
