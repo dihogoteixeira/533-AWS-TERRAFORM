@@ -4,6 +4,12 @@ module "vpc_local" {
   subnet_cidr_block = var.subnet_cidr_block
 }
 
+module "vpc_rest_github" {
+  source            = "git@github.com:dihogoteixeira/aws_vpc_module.git?ref=0.1.0"
+  vpc_cidr_block    = var.vpc_cidr_block
+  subnet_cidr_block = var.subnet_cidr_block
+}
+
 # module "vpc_scm" {
 #   source = "git@github.com:dihogoteixeira/533-AWS-TERRAFORM.git?ref=1.23.0"
 # }
