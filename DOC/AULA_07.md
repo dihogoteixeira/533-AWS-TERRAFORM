@@ -241,3 +241,81 @@ To git@github.com:dihogoteixeira/tf-gcp-modules.git
 ```
 
 Devemos alterar nosso código que consome este módulo para utilizar a nova `tag`.
+
+Instruções:
+
+Para facilitar a organização, para cada exercício, crie uma pasta em separado. Utilize o terraform plan para realizar os testes de seu script.
+
+Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform plan` e o `terraform validate` para verificar a saída no output.
+
+Caso houver qualquer erro, leia atentamente o terminal.
+
+* Para cada exercício, crie um novo diretório.
+* Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o "terraform plan" para verificar a saída no terminal.
+* Caso houver qualquer erro, leia atentamente o terminal.
+
+Exercício 1.
+
+Utilize o seguinte módulo: [https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+
+* Crie uma rede VPC com CIDR 192.168.0.0/16
+* Nome da rede: rede-tf-chapter11
+* Nome da subnet: subnet-tf-chapter11
+
+> Mostre os seguintes outputs:
+
+* name
+* vpc\_id
+* vpc\_cidr\_block
+
+* Altere o nome do seu módulo para ***rede-tf-chapter11-ex1***, faça o plano de execução e tente aplicar o código.
+* Destrua a infraestrutura
+
+Exercício 2.
+
+Utilize o seguinte módulo: [https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+
+* Crie uma rede VPC com rede 10.10.10.0/23
+* Nome da rede: rede-tf-chapter11-ex2
+* Nome da subnet: subnet-tf-chapter11-ex2
+
+> Mostre os seguintes outputs:
+
+* public\_subnets\_cidr\_blocks
+* public\_subnets
+* public\_subnet\_arns
+
+* Altere o nome do seu módulo para ***rede-tf-chapter11***, faça o plano de execução e tente aplicar o código.
+
+Exercício 3.
+
+Utilize o seguinte módulo: [https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/6.4.0?tab=inputs](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/6.4.0?tab=inputs)
+
+* Crie um balanceador de carga.
+* Nome do balanceador de carga: lb-tf-chapter11
+* Porta de serviço/service port: 80
+* tags: allow-lb-web
+* VPC: (Referencie a mesma criada anteriormente)
+
+> Mostre os seguintes outputs:
+
+* lb\_dns\_name
+
+* Destrua a infraestrutura
+
+Exercício 2.
+
+* Faça o clone dos repositórios que gerencia instâncias e rede
+* Crie um Workspace chamado "tst".
+* Utilize uma variável para utilizar o "count" para o Workspace "tst". Este valor deverá ser informado pelo usuário.
+* Adicione todos os valores para utilizar Workspaces
+* Crie dependência de rede entre eles.
+* Deverá ter outputs no terminal para estes módulos.
+* Para os testes, faça o apontamento para o módulo localmente.
+* Faça o versionamento do módulo.
+
+Exercício 3.
+
+* Crie um backend.
+* Crie os recursos que quiser.
+* Verifique no painel da AWS o arquivo terraform.tfstate sendo criado.
