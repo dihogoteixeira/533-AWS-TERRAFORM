@@ -13,7 +13,7 @@ resource "aws_s3_bucket_versioning" "this" {
 
 /* 
 
-for_each = ../shared/html/*.* 
+for_each = ../shared/html/** 
 1. index.hml
   - each.value = ../shared/html/index.hml
 
@@ -25,6 +25,9 @@ for_each = ../shared/html/*.*
 
 */
 
+# https://www.terraform.io/language/meta-arguments/for_each
+# https://www.terraform.io/language/functions/fileset
+# https://www.terraform.io/language/functions/md5
 resource "aws_s3_object" "this" {
   for_each = fileset("../shared/html", "**")
 
@@ -32,4 +35,24 @@ resource "aws_s3_object" "this" {
   key    = each.value
   source = "../shared/html/${each.value}"
   etag   = filemd5("../shared/html/${each.value}")
+}
+
+# // IAM USER EXEMPLO
+# # https://www.terraform.io/language/functions/toset
+resource "aws_iam_user" "this" {
+  for_each = toset(["amaro", "diones", "ricardo", "evelyn", "camila"])
+  name     = each.value
+}
+
+
+// VPC UTILIZANDO FOR_EACH
+resource "aws_vpc" "this" {
+  for_each   = var.vpcs
+  cidr_block = each.value.cidr_block
+  # nome = each.value.batatinha
+}
+
+resource "aws_internet_gateway" "this" {
+  for_each = aws_vpc.this
+  vpc_id   = each.value.id
 }
