@@ -7,6 +7,10 @@ output "owner_id" {
   value = aws_vpc.this.owner_id
 }
 
-output "tags_all" {
-  value = aws_vpc.this.tags_all
+output "main_route_table_id" {
+  value = aws_vpc.this.main_route_table_id
+}
+
+output "cidr_block" {
+  value = aws_vpc.this.cidr_block
 }
