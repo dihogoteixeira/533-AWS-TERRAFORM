@@ -3,7 +3,7 @@ resource "aws_ecr_repository" "this" {
   tags = merge(var.tags)
 }
 
-resource "aws_ecr_registry_policy" "this" {
+resource "aws_ecr_repository_policy" "this" {
   repository = aws_ecr_repository.this.name
 
   policy = <<EOF
