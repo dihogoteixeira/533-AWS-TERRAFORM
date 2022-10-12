@@ -7,6 +7,7 @@ variable "cidr_block" {
 // Optional variables
 variable "tags" {
   type = map(string)
+  description = "to tag environments on resources"
   default = {
     Project   = "4linux"
     Terraform = "true"
