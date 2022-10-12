@@ -122,6 +122,25 @@ resource "aws_alb_target_group" "this" {
   }
 }
 
+resource "aws_alb_target_group" "green" {
+  name        = "${local.app_name}-tg-green"
+  port        = var.app_port
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+  tags        = merge(local.tags)
+
+  health_check {
+    healthy_threshold   = "2"
+    unhealthy_threshold = "2"
+    interval            = "300"
+    matcher             = "200"
+    timeout             = "120"
+    protocol            = "HTTP"
+    path                = var.health_check_path
+  }
+}
+
 resource "aws_alb_listener" "this" {
   load_balancer_arn = aws_alb.this.id
   port              = var.app_port
@@ -134,6 +153,10 @@ resource "aws_alb_listener" "this" {
     forward {
       target_group {
         arn = aws_alb_target_group.this.arn
+      }
+
+      target_group {
+        arn = aws_alb_target_group.green.arn
       }
     }
   }
